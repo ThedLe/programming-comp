@@ -1,0 +1,250 @@
+#input
+
+input_strings = input("Write down the input: ")
+
+#making a list without spaces
+def make_list(a):
+    empty_list2 = []
+    for i in range(len(a)):
+        if a[i] == " ":
+            continue
+        empty_list2 += (a[i])
+    return empty_list2
+  
+#Addition
+def addition(a):
+  for i in range(len(a)):
+      if a[i] == "+":
+          added = int(a[i-1]) + int(a[i+1])
+          return (added)
+
+#Subtraction
+def subtraction(s):
+  for i in range(len(s)):
+      if s[i] == "-":
+          subtracted = int(s[i-1]) - int(s[i+1])
+          return (subtracted)
+
+def division(a):
+  for i in range(len(a)):
+      if a[i] == "/":
+          divided = int(a[i-1]) / int(a[i+1])
+          return (divided)
+
+def multiplication(a):
+  for i in range(len(a)):
+      if a[i] == "*":
+          added = int(a[i-1]) * int(a[i+1])
+          return (added)
+
+
+pi = 3.14159265
+e = 2.718281828
+def factorial(n):
+    if n == 1 or n == 0:
+        return 1
+    else:
+      fact = n * factorial(n-1)
+      return fact
+
+
+
+def sin(x):
+    sinx = x - x^3/factorial(3) + x^5/factorial(5) - x^7/factorial(7) + x^9/factorial(9) - x^11/factorial(11)
+    sinx = str(sinx)
+    return float(sinx)
+
+
+
+
+def cos(x):
+    cosx = sin((pi / 2) - x)
+    return float(cosx)
+    
+
+def asin(x):
+    asinx = 1/(sin(x))
+    return float(asinx)
+
+def acos(x):
+    acosx = 1/(cos(x))
+    return float(acosx)
+
+def tan(x):
+    tanx = (1/(tan(x)))((pi / 2) - x)
+    return float(tanx)
+
+def atan(x):
+    atanx = 1/(tan(x))
+    return float(atanx)
+
+
+n = 1000000000
+def log(x): #x is base in the form log_x(y) = b
+
+    if x == 0:
+        return 0
+
+    elif (x > 0):
+        return "undefined"
+    else:
+        log = n(x^(1/n)-1)
+        return float(log)
+
+
+full_list_no_space = make_list(input_strings)
+print(addition(full_list_no_space))
+
+full_list_no_space = make_list(input_strings)
+print(subtraction(full_list_no_space))
+
+full_list_no_space = make_list(input_strings)
+print(multiplication(full_list_no_space))
+
+full_list_no_space = make_list(input_strings)
+print(division(full_list_no_space))
+
+a = input("write the string: ")
+empty_list = []
+empty_list3 = []
+second_addition = ""
+full_list_no_space = make_list(a)
+
+for i in range(len(full_list_no_space)):
+    if full_list_no_space[i] == "+":
+        empty_list.append(full_list_no_space[i])
+        later_addition = full_list_no_space[i+1:]
+        if later_addition[0] == "(":
+            inner_bracket = later_addition[i:]
+            inner_bracket.remove(")")
+            for j in inner_bracket:
+                if j == "+" and j != "-" and j != "*" and j != "/":
+                    only_addition = addition(inner_bracket)
+                    empty_list.append(only_addition)
+                    print(str(addition(empty_list)))
+                    break
+                elif j == "-":  # and j != "-" and j!="*" and j!="/":
+                    only_subtraction = subtraction(inner_bracket)
+                    empty_list.append(only_subtraction)
+                    print(str(addition(empty_list)))
+                    break
+                elif j == "*" and j != "-" and j != "+" and j != "/":
+                    only_multipplication = multiplication(inner_bracket)
+                    empty_list.append(only_multipplication)
+                    print(str(addition(empty_list)))
+                    break
+                elif j == "/" and j != "-" and j != "*" and j != "+":
+                    only_division = division(inner_bracket)
+                    empty_list.append(only_division)
+                    print(str(addition((empty_list))))
+                    break
+            else:
+                continue
+            break
+
+    if full_list_no_space[i] == "-":
+        empty_list.append(full_list_no_space[i])
+        later_addition = full_list_no_space[i+1:]
+        if later_addition[0] == "(":
+            inner_bracket = later_addition[1:]
+            inner_bracket.remove(")")
+            for j in inner_bracket:
+                if j == "+" and j != "-" and j != "*" and j != "/":
+                    only_addition = addition(inner_bracket)
+                    empty_list.append(only_addition)
+                    print(str(subtraction(empty_list)))
+                    break
+                elif j == "-":  # and j != "-" and j!="*" and j!="/":
+                    only_subtraction = subtraction(inner_bracket)
+                    empty_list.append(only_subtraction)
+                    print(str(subtraction(empty_list)))
+                    break
+                elif j == "*" and j != "-" and j != "+" and j != "/":
+                    only_multipplication = multiplication(inner_bracket)
+                    empty_list.append(only_multipplication)
+                    print(str(subtraction(empty_list)))
+                    break
+                elif j == "/" and j != "-" and j != "*" and j != "+":
+                    only_division = division(inner_bracket)
+                    empty_list.append(only_division)
+                    print(str(subtraction((empty_list))))
+                    break
+            else:
+                continue
+            break
+
+    if full_list_no_space[i] == "/":
+        empty_list.append(full_list_no_space[i])
+        later_addition = full_list_no_space[i+1:]
+        if later_addition[0] == "(":
+            inner_bracket = later_addition
+            inner_bracket.remove(")")
+            for j in inner_bracket:
+                if j == "+" and j != "-" and j != "*" and j != "/":
+                    only_addition = addition(inner_bracket)
+                    empty_list.append(only_addition)
+                    print(str(division(empty_list)))
+                    break
+                elif j == "-":  # and j != "-" and j!="*" and j!="/":
+                    only_subtraction = subtraction(inner_bracket)
+                    empty_list.append(only_subtraction)
+                    print(str(division(empty_list)))
+                    break
+                elif j == "*" and j != "-" and j != "+" and j != "/":
+                    only_multipplication = multiplication(inner_bracket)
+                    empty_list.append(only_multipplication)
+                    print(str(division(empty_list)))
+                    break
+                elif j == "/" and j != "-" and j != "*" and j != "+":
+                    only_division = division(inner_bracket)
+                    empty_list.append(only_division)
+                    print(str(division((empty_list))))
+                    break
+            else:
+                continue
+            break
+
+    if full_list_no_space[i] == "*":
+        later_addition = full_list_no_space[i+1:]
+        if later_addition[0] == "(":
+            inner_bracket = later_addition
+            inner_bracket.remove(")")
+            for j in inner_bracket:
+                if j == "+" and j != "-" and j != "*" and j != "/":
+                    only_addition = addition(inner_bracket)
+                    empty_list.append(only_addition)
+                    print(str(multiplication(empty_list)))
+                    break
+                elif j == "-":  # and j != "-" and j!="*" and j!="/":
+                    only_subtraction = subtraction(inner_bracket)
+                    empty_list.append(only_subtraction)
+                    print(str(multiplication(empty_list)))
+                    break
+                elif j == "*" and j != "-" and j != "+" and j != "/":
+                    only_multipplication = multiplication(inner_bracket)
+                    empty_list.append(only_multipplication)
+                    print(str(multiplication(empty_list)))
+                    break
+                elif j == "/" and j != "-" and j != "*" and j != "+":
+                    only_division = division(inner_bracket)
+                    empty_list.append(only_division)
+                    print(str(multiplication((empty_list))))
+                    break
+            else:
+                continue
+            break
+    empty_list.append(full_list_no_space[i])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
